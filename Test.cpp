@@ -8,16 +8,53 @@ void arr_copy(int arr[], int copy[]) {
 	}
 }
 
-int main() {
-	static int arr[st_len]{};
-	static int copy[st_len]{};
+
+
+void un_easy(int arr[], int copy[]) {
+	for (int i = 0; i < st_len; i++)
+	{
+		arr[i] = copy[i] = st_len - i;
+	}
+}
+
+void not_bad(int arr[], int copy[]) {
+	srand(time(0));
+	for (int i = 0; i < st_len; i++)
+	{
+		if (i < st_len / 100 * 90)
+		{
+			arr[i] = copy[i] = i;
+		}
+		else
+		{
+			arr[i] = rand();
+			copy[i] = arr[i];
+		}
+	}
+}
+
+void easy(int arr[], int copy[]) {
+	for (int i = 0; i < st_len; i++)
+	{
+		arr[i] = copy[i] = i;
+	}
+}
+
+void random(int arr[], int copy[]) {
 	srand(time(0));
 	for (int i = 0; i < st_len; i++)
 	{
 		arr[i] = rand();
 		copy[i] = arr[i];
-		//cout << arr[i] << ' ';
 	}
+}
+
+int main() {
+	static int arr[st_len]{};
+	static int copy[st_len]{};
+
+	un_easy(arr, copy);//выбор массива
+	
 	ofstream txt("results_time.txt", ios::app);
 	for (int step = 0; step < 50001; step += 10000)
 	{

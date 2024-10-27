@@ -2,16 +2,6 @@
 
 //5 shell_sort
 //сортировка Шелла (последовательность Шелла, Хиббарда, Пратта)
-//template<typename RandomAccessIterator, typename Compare>
-//void shell_sort234(RandomAccessIterator first, RandomAccessIterator last, Compare comp)
-//{
-//	for (auto d = (last - first) / 2; d != 0; d /= 2)
-//		//нужен цикл для first = a[0..d-1]
-//		for (auto i = first + d; i != last; ++i)
-//			for (auto j = i; j - first >= d && comp(*j, *(j - d)); j -= d)
-//				swap(*j, *(j - d));//std::
-//}
-
 int set_d(int d, int num)
 {
 	int n = 1;
@@ -44,8 +34,7 @@ void lets_shell(int arr[], int len, int d, int num) {
 			}
 			arr[r] = tmp;
 		}
-		//lets_shell(arr, len, set_d(d, num), num);
-		d = set_d(d, num);
+		lets_shell(arr, len, set_d(d, num), num);
 	}
 }
 
